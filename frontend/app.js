@@ -40,3 +40,8 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js')
   .then(() => navigator.serviceWorker.ready)
   .then(() => field('offline').textContent = 'Guia disponível offline neste navegador.')
   .catch(() => field('offline').textContent = 'O guia ainda precisa de conexão para abrir.');
+
+field('example').onclick = () => {
+  show({need:'Dona Lúcia precisa de companhia para se deslocar.', who:'Ana, filha que trabalha em outro bairro', action:'Telefonar para Lúcia e combinar apoio com a vizinha Rosa.', confirmed:false});
+  field('status').textContent = 'Exemplo fictício. Revise e toque em Guardar meu plano para salvar.';
+};

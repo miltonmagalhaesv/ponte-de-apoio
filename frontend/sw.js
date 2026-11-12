@@ -1,4 +1,4 @@
-const version = 'ponte-guia-v1';
+const version = 'ponte-guia-v2';
 const files = ['./','./index.html','./style.css','./app.js','./plan.mjs'];
 self.addEventListener('install', event => event.waitUntil(caches.open(version).then(cache => cache.addAll(files))));
 self.addEventListener('activate', event => event.waitUntil(self.clients.claim()));
