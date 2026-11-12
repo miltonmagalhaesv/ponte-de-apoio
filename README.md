@@ -1,60 +1,15 @@
-# 🏆 [NOME DA EQUIPE] - Hackathon APONTI Academy 2026
+# Ponte de Apoio
+Equipe 9 · Antena na Lama · Caminho proposto: Prevenir e cuidar.
 
-> **Desafio:** Antena na Lama (REC'n'Play 2026)
-> **Caminho escolhido:** [Prevenir e cuidar / Alertar e proteger / Mobilizar e recuperar]
+Guia de bolso para combinar ajuda antes das chuvas. [Documento editável da equipe](docs/Ponte-de-Apoio.docx). Repositório de trabalho pessoal baseado no [modelo APONTI](https://github.com/apontiacademy/HACKATHON-PE-RECPLAY26). A entrega institucional depende de acesso à organização.
 
-## 📖 Sobre o Projeto
-[Descreva aqui em 2 ou 3 parágrafos qual problema a solução resolve, como ela ajuda a população da Região Metropolitana do Recife e como funciona.]
+## Experimentar
+Execute `python3 -m http.server 8000 --directory frontend` e abra http://localhost:8000. Preencha o plano, marque se a ajuda está confirmada e salve. Após o aviso offline, desligue a rede e recarregue. A leitura usa a voz disponível no aparelho. Para testar no celular fora de localhost, use hospedagem HTTPS.
 
-## 👥 Equipe
-*   **Desenvolvedores:**
-    *   [Nome 1] - [Trilha: ex: Front-end]
-    *   [Nome 2] - [Trilha: ex: Back-end]
-    *   [Nome 3] - [Trilha: ex: Dados/DevOps]
-    *   [Nome 4] - [Trilha: ex: Mobile/Testes]
-*   **Validador(a) (Movimento Pró-Criança):**
-    *   [Nome do Validador]
+## Privacidade e colaboração
+Os campos ficam no armazenamento do navegador, sem cadastro ou transmissão a servidor. Quem usa o mesmo perfil de navegador pode ler o plano. Use apelidos em aparelhos compartilhados e apague após o teste. A interface insere o texto do usuário sem interpretar HTML. Não há dependências de aplicação nem chaves de API. Nunca inclua sessões de WhatsApp, dados do validador ou credenciais no GitHub.
 
-## 🚀 Tecnologias Utilizadas
-*   **Front-end:** [Ex: React, Next.js, TailwindCSS]
-*   **Back-end:** [Ex: Node.js (Express) ou Python (FastAPI)]
-*   **Banco de Dados:** [Ex: PostgreSQL]
-*   **Deploy:** [Ex: Vercel (Front) / Render (Back)]
-*   **Testes:** [Ex: Jest, Pytest]
+Proponha mudanças por pull request. Rode `node --test tests/*.test.mjs` antes do envio. O CI repete os testes, verifica sintaxe e nomes de arquivos privados com permissões de leitura. A verificação por nome não substitui a revisão do conteúdo.
 
-## 🤖 Uso Ético de IA (Obrigatório pelo Edital)
-*Conforme o item 9 do edital, registrem onde a IA foi usada e como foi corrigida.*
-
-*   **Onde a IA foi usada:** [Ex: Geração do boilerplate inicial do React, criação dos testes de API, sugestão de design de UI.]
-*   **O que foi corrigido/validado:** [Ex: A IA gerou um código de conexão com o banco, mas corrigimos a vulnerabilidade de SQL Injection; O design sugerido não era acessível, então refizemos as cores.]
-*   **Ferramentas usadas:** [Ex: ChatGPT, GitHub Copilot, Gemini]
-
-## 🛠️ Como rodar o projeto localmente
-### Pré-requisitos
-[Ex: Node.js 18+, Python 3.10+, PostgreSQL]
-
-### Back-end
-```bash
-cd backend
-# Instalar dependências
-npm install # ou pip install -r requirements.txt
-# Rodar servidor
-npm run dev # ou uvicorn main:app --reload
-Front-end
-bash
-cd frontend
-# Instalar dependências
-npm install
-# Rodar projeto
-npm run dev
-🌐 Deploy Público
-Link do Front-end: [Cole o link da Vercel]
-
-Link da API (Back-end): [Cole o link do Render]
-
-🧪 Testes Automatizados
-Temos pelo menos 3 testes automatizados passando no CI (GitHub Actions). Para rodar localmente:
-
-bash
-cd backend
-npm test # ou pytest
+## Uso de IA e validação
+IA auxiliou na geração da primeira interface, testes e documentação. Revisão humana, entrevista com o jovem e aprovação do escopo pelo mentor pendentes. Esta versão monta o combinado localmente. A personalização por IA com conteúdo municipal revisado, a base de acolhimento do kit e o mapa ainda precisam ser integrados. Indicador proposto: completar o plano sem ajuda e identificar quem confirmou apoio após reabrir sem internet. Registre o resultado observado e as mudanças após o teste.

@@ -16,3 +16,9 @@ build/
 # Sistema Operacional
 .DS_Store
 Thumbs.db
+
+.env*
+sessao_*/
+*.pem
+*.key
+creds.json
