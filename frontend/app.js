@@ -45,3 +45,45 @@ field('example').onclick = () => {
   show({need:'Dona Lúcia precisa de companhia para se deslocar.', who:'Ana, filha que trabalha em outro bairro', action:'Telefonar para Lúcia e combinar apoio com a vizinha Rosa.', confirmed:false});
   field('status').textContent = 'Exemplo fictício. Revise e toque em Guardar meu plano para salvar.';
 };
+
+async function renderMap() {
+  try {
+    const response = await fetch('./assets/map.json');
+    if (!response.ok) throw Error('Mapa indisponível');
+    const data = await response.json();
+    const canvas = field('map');
+    const ctx = canvas.getContext('2d');
+    const [west, south, east, north] = data.bounds;
+    const project = ([lon,lat]) => [25+(lon-west)/(east-west)*850, 25+(north-lat)/(north-south)*600];
+    ctx.fillStyle = '#e9ede4';
+    ctx.fillRect(0,0,900,650);
+    for (const way of data.ways) {
+      ctx.beginPath();
+      way.points.forEach((point,index) => {
+        const [x,y] = project(point);
+        if (index) ctx.lineTo(x,y); else ctx.moveTo(x,y);
+      });
+      if (way.kind !== 'street') {
+        ctx.fillStyle = way.kind === 'water' ? '#9acac7' : '#d2d8ca';
+        ctx.fill();
+      } else {
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 9;
+        ctx.stroke();
+      }
+    }
+    ctx.fillStyle = '#12382e';
+    ctx.font = '16px system-ui';
+    const named = new Set();
+    for (const way of data.ways.filter(way => way.kind === 'street' && way.name)) {
+      if (named.has(way.name) || way.points.length < 2) continue;
+      named.add(way.name);
+      const [x,y] = project(way.points[Math.floor(way.points.length/2)]);
+      if (x>0 && x<720 && y>20 && y<630) ctx.fillText(way.name,x,y);
+    }
+    field('map-status').textContent = 'Mapa carregado. Após o guia confirmar disponibilidade offline, você pode reabrir este recorte sem conexão.';
+  } catch {
+    field('map-status').textContent = 'Mapa indisponível. Reconecte para guardar o guia completo.';
+  }
+}
+renderMap();

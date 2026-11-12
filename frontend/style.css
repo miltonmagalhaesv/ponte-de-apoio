@@ -11,3 +11,7 @@ aside{border-left:4px solid #185841;padding:.2rem 1rem;margin-top:1.5rem}
 #example{background:transparent;color:#185841;border:2px solid #185841}
 button{min-height:48px;cursor:pointer}form{margin-top:1.6rem}
 @media(min-width:750px){main{max-width:48rem;padding:3rem}form,section{padding:2rem}}
+
+.map-card{background:white;border-radius:16px;padding:1.2rem;margin:1.5rem 0}canvas{width:100%;height:auto;border-radius:8px}a{color:#185841}
+
+.brand{width:100%;height:auto;margin-top:1.5rem;border-radius:12px}

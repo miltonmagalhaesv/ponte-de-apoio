@@ -13,3 +13,6 @@ Proponha mudanças por pull request. Rode `node --test tests/*.test.mjs` antes d
 
 ## Uso de IA e validação
 IA auxiliou na geração da primeira interface, testes e documentação. Revisão humana, entrevista com o jovem e aprovação do escopo pelo mentor pendentes. Esta versão monta o combinado localmente. A personalização por IA com conteúdo municipal revisado, a base de acolhimento do kit e o mapa ainda precisam ser integrados. Indicador proposto: completar o plano sem ajuda e identificar quem confirmou apoio após reabrir sem internet. Registre o resultado observado e as mudanças após o teste.
+
+## Mapa offline experimental
+Recorte de São José no Recife, obtido da API OpenStreetMap em 12/11/2026. © OpenStreetMap contributors, dados sob ODbL: https://www.openstreetmap.org/copyright. O arquivo local contém ruas e edificações. Não há roteamento, informação de transitabilidade nem abertura de abrigos. O service worker guarda o mapa junto à aplicação. Teste de reabertura offline em aparelho ainda pendente. Identidade provisória Pontes de Apoio gerada com IA e sujeita à revisão da equipe.
