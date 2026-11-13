@@ -14,6 +14,7 @@ try {
   plans.push(...savedPlans.filter(plan => plan && typeof plan === 'object' && typeof plan.person === 'string' && Array.isArray(plan.help || [])));
  }
 } catch {}
+if (plans.length > 1) idx = plans.length - 1;
 function savePlans(updatedPlans) {
  try {
   localStorage.setItem(plansKey, JSON.stringify(updatedPlans.slice(1)));
@@ -59,7 +60,7 @@ function chat(){
 function go(p){nav.innerHTML=pages.map(x=>'<button aria-current="'+(p===x)+'" onclick="go(\''+x+'\')">'+x+'</button>').join('');if(p==='Converse') chat();if(p==='Início') screen.innerHTML = `
 <h1 class="home-title">Seu guia para a chuva</h1>
 <div class="notice"><small>Aviso simulado · São José</small><p><b>Previsão de chuva forte</b></p><button onclick="go('Avisos')">Ver avisos</button></div>
-<h2>Meu plano</h2><p>${esc(plans[idx].person)} · ${esc(plans[idx].dest || 'Destino a combinar')}</p>
+<h2>Meu plano</h2><p>${idx===0 ? 'Exemplo fictício · ' : ''}${esc(plans[idx].person)} · ${esc(plans[idx].dest || 'Destino a combinar')}</p>
 <button class="primary" onclick="detail(idx)">Ver meu plano</button>
 <div class="quick"><button onclick="go('Mapa')">Ver mapa</button><a href="https://acaoinverno.recife.pe.gov.br/">Consultar abrigos ativos</a></div><button onclick="openExample(1)">Três destinos de Dona Lúcia</button>
 <button onclick="go('Converse')">Conversar sobre meu plano</button><h2>Preciso de ajuda</h2><div class="quick"><a href="tel:08000813400">Defesa Civil<br>0800 081 3400</a><a href="tel:193">Bombeiros<br>193</a></div>`;
