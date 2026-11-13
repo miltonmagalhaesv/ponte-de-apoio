@@ -71,6 +71,7 @@ Na raiz do repositório, execute:
 
 ```bash
 node --test tests/*.test.mjs
+
 ```
 
 O GitHub Actions está configurado para executar os testes e verificações de sintaxe em pushes e pull requests.
