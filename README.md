@@ -11,7 +11,7 @@ O guia funcional permite registrar um combinado neste navegador, ouvir o resumo 
 
 ## 👥 Equipe
 
-- **Equipe:** 9
+- **Equipe:** 6
 - **Integrantes:** Milton Magalhães | Vitória Camilo | Fellype Augusto de Oliveira | Enderson Lucas Costa
 - **Validador(a) do Movimento Pró-Criança:** José Vinícius Ferreira
 
@@ -52,7 +52,7 @@ Na raiz do repositório, execute:
 python3 -m http.server 8000 --directory frontend
 ```
 
-Abra `http://localhost:8000` para o guia funcional. O questionário ilustrativo está em desenvolvimento e ainda não foi enviado a este repositório.
+Abra `http://localhost:8000` para o aplicativo. A apresentação está em `/pitch.html` e o guia persistente em `/guia.html`.
 
 O guia guarda dados no navegador do aparelho. Quem acessar o mesmo perfil do navegador pode ler o combinado. Para os testes, use dados fictícios e o botão de apagar ao terminar.
 
@@ -71,6 +71,7 @@ Na raiz do repositório, execute:
 
 ```bash
 node --test tests/*.test.mjs
+
 ```
 
 O GitHub Actions está configurado para executar os testes e verificações de sintaxe em pushes e pull requests.
@@ -85,6 +86,8 @@ A conversa e o teste de uso com o validador devem ser registrados aqui, incluind
 
 ## 📚 Material de apoio
 
-- Plano de execução e roteiro de pitch: disponível na cópia local, ainda não enviado.
+- [Plano de execução e roteiro de pitch](docs/Plano-de-execucao.md)
 - [Documento editável da equipe](docs/Ponte-de-Apoio.docx)
 - [Modelo do hackathon](https://github.com/apontiacademy/HACKATHON-PE-RECPLAY26/blob/main/README.md)
+
+[Requisitos gerais e critérios de aceite](docs/Requisitos.md) · [Apresentação interativa](frontend/pitch.html)

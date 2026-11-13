@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#005f73">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  
+  <title>Ponte de Apoio - Guia de Emergência</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Polyfill inserido diretamente no HTML para carregar antes de tudo -->
+  <script>
+    if (!window.crypto) { window.crypto = {}; }
+    if (!window.crypto.randomUUID) {
+      window.crypto.randomUUID = function() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+        });
+      };
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    <img src="assets/brand.jpg" alt="Logo Ponte de Apoio" class="logo">
+    <h1>Ponte de Apoio</h1>
+    <p>Guia de preparação para dias de chuva na RMR</p>
+  </header>
+
+  <main>
+    <!-- Seção do Mapa Offline -->
+    <section id="secao-mapa">
+      <h2>Mapa de São José</h2>
+      <!-- O canvas onde o JavaScript desenha as ruas a partir do map.json -->
+      <canvas id="mapa-canvas" width="400" height="300"></canvas>
+    </section>
+
+    <!-- Seção de Busca de Abrigo -->
+    <section id="secao-abrigo">
+      <h2>Encontrar Abrigo Seguro</h2>
+      <p>Use a sua localização atual para descobrir qual é o ponto de apoio oficial mais próximo de você.</p>
+      <button type="button" id="btn-buscar-abrigo">Buscar Abrigo Mais Próximo</button>
+      
+      <!-- Div onde o resultado vai aparecer -->
+      <div id="resultado-abrigo" style="margin-top: 15px; padding: 10px; border-radius: 5px; background-color: #e9ede4; display: none;"></div>
+    </section>
+
+    <!-- Seção do Combinado (Plano Familiar) -->
+    <section id="secao-plano">
+      <h2>O seu Combinado</h2>
+      <p>Combine com quem você pode contar e onde pretende se encontrar em caso de emergência.</p>
+      
+      <form id="form-plano">
+        <div class="campo">
+          <label for="nome">Nome Completo:</label>
+          <input type="text" id="nome" name="nome" placeholder="Ex: Enderson Lucas" required>
+        </div>
+
+        <div class="campo">
+          <label for="telefone">Seu Telefone:</label>
+          <input type="tel" id="telefone" name="telefone" placeholder="81999999999" required>
+        </div>
+
+        <div class="campo">
+          <label for="ponto-encontro">Ponto de Encontro:</label>
+          <input type="text" id="ponto-encontro" name="ponto-encontro" placeholder="Ex: Igreja da Praça Central" required>
+        </div>
+
+        <div class="campo">
+          <label for="contatos">Contatos de Emergência (Nome e Número):</label>
+          <textarea id="contatos" name="contatos" rows="3" placeholder="Mãe: 81988888888"></textarea>
+        </div>
+
+        <div class="campo">
+          <label for="necessidades">Necessidades Especiais (Opcional):</label>
+          <input type="text" id="necessidades" name="necessidades" placeholder="Ex: Cadeira de rodas, medicamentos...">
+        </div>
+
+        <button type="submit" id="btn-salvar">Salvar Combinado</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Dependências do Supabase (via CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
+  <!-- Scripts da Aplicação -->
+  <script type="module" src="plan.mjs"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
