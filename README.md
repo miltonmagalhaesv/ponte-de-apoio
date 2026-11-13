@@ -1,4 +1,4 @@
-# 🏆 Equipe 9 · Ponte de Apoio — Hackathon APONTI Academy 2026
+# 🏆 Equipe 6 · Ponte de Apoio — Hackathon APONTI Academy 2026
 
 > **Desafio:** Antena na Lama (REC'n'Play 2026)  
 > **Caminho escolhido:** Prevenir e cuidar
@@ -11,9 +11,9 @@ O guia funcional permite registrar um combinado neste navegador, ouvir o resumo 
 
 ## 👥 Equipe
 
-- **Equipe:** 9
-- **Integrantes:** Milton Magalhães e equipe — nomes e atribuições a completar com o grupo.
-- **Validador(a) do Movimento Pró-Criança:** a confirmar com a equipe.
+- **Equipe:** 6
+- **Integrantes:** Milton Magalhães | Vitória Camilo | Fellype Augusto de Oliveira | Enderson Lucas Costa
+- **Validador(a) do Movimento Pró-Criança:** José Vinícius Ferreira
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -52,7 +52,7 @@ Na raiz do repositório, execute:
 python3 -m http.server 8000 --directory frontend
 ```
 
-Abra `http://localhost:8000` para o guia funcional. Para experimentar o questionário ilustrativo, abra `http://localhost:8000/prototipo.html`. O protótipo ilustrativo não mantém as respostas após recarregar.
+Abra `http://localhost:8000` para o aplicativo. A apresentação está em `/pitch.html` e o guia persistente em `/guia.html`.
 
 O guia guarda dados no navegador do aparelho. Quem acessar o mesmo perfil do navegador pode ler o combinado. Para os testes, use dados fictícios e o botão de apagar ao terminar.
 

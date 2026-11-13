@@ -27,3 +27,12 @@ test('todos os arquivos prometidos para uso offline estão na entrega', () => {
     assert.ok(readFileSync(new URL(path === './' ? './index.html' : path, root)).length, path);
   }
 });
+
+test('assistente diferencia apoio pendente, destino e pedido de socorro', () => {
+  const context = createContext({document:{querySelector:()=>({})}});
+  runInContext(script, context);
+  const ask = question => context.answer(question, {who:'Ana',dest:'Casa de Rosa',agreed:false});
+  assert.match(ask('Quem vem comigo?'), /Ana.*a confirmar/);
+  assert.match(ask('Onde posso ficar?'), /Casa de Rosa/);
+  assert.match(ask('Não consigo contactar'), /193/);
+});

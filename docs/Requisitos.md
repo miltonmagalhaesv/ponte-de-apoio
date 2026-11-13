@@ -13,3 +13,5 @@ O guia apoia moradores do Recife que precisam planejar com quem sair e onde fica
 | Entrega | A CI executa testes em PRs. O fluxo de Pages publica a pasta frontend após CI aprovada na main. |
 
 Próximo teste com moradores: verificar se identificam o acompanhante, o destino confirmado e a ação disponível quando esse destino falha.
+
+O assistente por voz consulta o plano selecionado. Oferece entrada por fala quando o navegador permite, perguntas por toque, texto e leitura da resposta. Reconhecimento depende do navegador e pode exigir rede. O assistente usa regras locais e não aciona resgate nem verifica condições em tempo real.
