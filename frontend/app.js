@@ -46,6 +46,30 @@ field('example').onclick = () => {
   field('status').textContent = 'Exemplo fictício. Revise e toque em Guardar meu plano para salvar.';
 };
 
+function drawDemoRoute(ctx, points, project) {
+  ctx.save();
+  ctx.strokeStyle = '#07579a';
+  ctx.lineWidth = 5;
+  ctx.beginPath();
+  points.forEach((point, index) => {
+    const [x, y] = project(point);
+    if (index) ctx.lineTo(x, y); else ctx.moveTo(x, y);
+  });
+  ctx.stroke();
+  for (const [point, label] of [[points[0], 'A'], [points[points.length - 1], 'B']]) {
+    const [x, y] = project(point);
+    ctx.fillStyle = '#073652';
+    ctx.beginPath();
+    ctx.arc(x, y, 10, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.fillStyle = 'white';
+    ctx.textAlign = 'center';
+    ctx.font = 'bold 13px sans-serif';
+    ctx.fillText(label, x, y + 4);
+  }
+  ctx.restore();
+}
+
 async function renderMap() {
   try {
     const response = await fetch('./assets/map.json');
@@ -81,6 +105,11 @@ async function renderMap() {
       const [x,y] = project(way.points[Math.floor(way.points.length/2)]);
       if (x>0 && x<720 && y>20 && y<630) ctx.fillText(way.name,x,y);
     }
+    field('route').disabled = false;
+    field('route').onclick = () => {
+      drawDemoRoute(ctx, data.demoRoute, project);
+      field('map-status').textContent = 'A: casa de exemplo. B: casa da irmã. Percurso ilustrativo, sem verificação das condições de passagem.';
+    };
     field('map-status').textContent = 'Mapa carregado. Após o guia confirmar disponibilidade offline, você pode reabrir este recorte sem conexão.';
   } catch {
     field('map-status').textContent = 'Mapa indisponível. Reconecte para guardar o guia completo.';
