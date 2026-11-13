@@ -17,13 +17,19 @@ O guia funcional permite registrar um combinado neste navegador, ouvir o resumo 
 
 ## 🚀 Tecnologias Utilizadas
 
-- **Front-end:** HTML, CSS e JavaScript.
-- **Armazenamento:** localStorage no navegador para o combinado do guia funcional.
-- **Funcionamento offline:** Service Worker e Cache Storage para os arquivos do guia.
-- **Mapa:** recorte local de dados OpenStreetMap, desenhado em Canvas. © OpenStreetMap contributors, [ODbL](https://www.openstreetmap.org/copyright).
-- **Back-end e banco de dados:** ainda não implementados.
-- **Deploy:** público pendente de confirmação.
-- **Testes:** Node.js test runner e GitHub Actions.
+O guia funcional é uma aplicação web móvel em HTML, CSS e JavaScript. A primeira abertura precisa de conexão. Depois que o guia confirma a disponibilidade offline, o usuário pode reabrir o plano e o mapa no mesmo dispositivo e perfil.
+
+| Recurso | Implementação atual |
+|---|---|
+| Plano pessoal | JavaScript valida as respostas e guarda o plano simples em `localStorage`. Os dados permanecem após fechar o guia. Limpar os dados do site também apaga o plano. |
+| Guia e mapa offline | Um Service Worker usa Cache Storage para guardar a interface e o arquivo cartográfico de São José. Canvas desenha as ruas a partir desse recorte. Dados © OpenStreetMap contributors, [ODbL](https://www.openstreetmap.org/copyright). |
+| Hospedagem e testes | A versão estática dispensa servidor de aplicação e banco remoto. O projeto utiliza o test runner do Node.js e GitHub Actions. O endereço público e a experiência offline em aparelho físico precisam de validação. |
+
+### Evolução proposta para o aplicativo instalado
+
+- **Instalação na tela inicial (PWA).** Acrescentar manifesto, ícones de instalação e abertura em janela própria. Publicar em HTTPS e testar instalação, fechamento e reabertura em modo avião no Android e no iPhone.
+- **Destinos e localização.** Pedir localização apenas quando a pessoa escolher usá-la, com endereço manual como alternativa. Guardar destino familiar e referência municipal. O botão proposto **Ir até o local** deve identificar se vai apenas mostrar o ponto no mapa salvo ou abrir um serviço externo de navegação. O mapa atual permite consulta visual; cálculo de trajetos offline requer uma malha de caminhos e um mecanismo de roteamento.
+- **Pré-alerta oficial.** Com conexão, consultar mudanças nos pontos da área salva e apresentar uma alternativa com fonte, horário, situação de acolhimento e acessibilidade conhecida. Em modo offline, exibir a última atualização guardada. A recomendação de um percurso depende também de informações sobre interdições e condições de passagem. Recepção de alertas, atualização automática e sugestões por localização são funcionalidades planejadas.
 
 ## 🤖 Uso Ético de IA
 
