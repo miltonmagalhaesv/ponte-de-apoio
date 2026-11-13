@@ -1,4 +1,4 @@
-# 🏆 Equipe 9 · Ponte de Apoio — Hackathon APONTI Academy 2026
+# 🏆 Equipe 6 · Ponte de Apoio — Hackathon APONTI Academy 2026
 
 > **Desafio:** Antena na Lama (REC'n'Play 2026)  
 > **Caminho escolhido:** Prevenir e cuidar
@@ -12,8 +12,8 @@ O guia funcional permite registrar um combinado neste navegador, ouvir o resumo 
 ## 👥 Equipe
 
 - **Equipe:** 9
-- **Integrantes:** Milton Magalhães e equipe — nomes e atribuições a completar com o grupo.
-- **Validador(a) do Movimento Pró-Criança:** a confirmar com a equipe.
+- **Integrantes:** Milton Magalhães | Vitória Camilo | Fellype Augusto de Oliveira | Enderson Lucas Costa
+- **Validador(a) do Movimento Pró-Criança:** José Vinícius Ferreira
 
 ## 🚀 Tecnologias Utilizadas
 
