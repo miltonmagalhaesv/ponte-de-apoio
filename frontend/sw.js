@@ -1,4 +1,4 @@
-const version = 'ponte-guia-v10';
+const version = 'ponte-guia-v11';
 const files = ['./','./index.html','./guia.html','./demonstracao.html','./style.css','./app.js','./plan.mjs','./assets/map.json','./assets/brand.jpg','./assets/icon.png'];
 self.addEventListener('install', event => event.waitUntil(caches.open(version).then(cache => cache.addAll(files))));
 self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('ponte-guia-') && key !== version).map(key => caches.delete(key)))).then(() => self.clients.claim())));
