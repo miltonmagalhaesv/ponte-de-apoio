@@ -1,0 +1,21 @@
+{
+  "name": "Ponte de Apoio - Guia de Emergência",
+  "short_name": "Ponte de Apoio",
+  "description": "Guia de preparação e apoio para dias de chuva na Região Metropolitana do Recife.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#005f73",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

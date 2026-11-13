@@ -1,1 +1,97 @@
-<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'"><title>Pontes de Apoio</title><link rel="stylesheet" href="style.css"><main><header>PONTES DE APOIO <span>Protótipo da Equipe 9</span></header><img class="brand" src="assets/brand.jpg" alt="Pontes de Apoio — Conectando pessoas e cuidado" width="650" height="433"><h1>Prepare sua rede de apoio</h1><p>Prepare um combinado para dias de chuva e guarde neste celular.</p><button type="button" id="example">Experimentar com uma família fictícia</button><form><h2>Prepare sua rede de apoio</h2><p>Uma pessoa de confiança pode estar perto ou em outro bairro.</p><label for="need">Quem precisa de apoio e em que situação?</label><input id="need" maxlength="180" required placeholder="Ex.: minha mãe precisa de companhia"><label for="who">Com quem você quer combinar ajuda?</label><input id="who" maxlength="80" required placeholder="Nome ou apelido"><label for="action">O que essa pessoa pode fazer?</label><input id="action" maxlength="180" required placeholder="Ex.: ligar antes de sair do trabalho"><label><input type="checkbox" id="confirmed"> Já combinei com essa pessoa</label><button>Guardar meu plano</button></form><section hidden><span class="tag">GUARDADO NESTE CELULAR</span><h2>Meu combinado</h2><p id="summary"></p><button type="button" id="hear">Ouvir plano</button> <button type="button" id="erase">Apagar deste celular</button></section><article class="map-card"><h2>Conheça o entorno</h2><p>Recorte de demonstração · São José, Recife</p><canvas id="map" width="900" height="650" role="img" aria-label="Mapa de ruas do entorno do Mercado de São José no Recife"></canvas><p>© OpenStreetMap contributors · <a href="https://www.openstreetmap.org/copyright">ODbL</a> · Baixado em 12/11/2026</p><p>Mapa de referência para preparação. Abertura de abrigos e condições das ruas precisam de confirmação atual.</p><p id="map-status" role="status">Carregando mapa…</p></article><aside><h2>Seu guia de bolso</h2><p>Organize quem pode ajudar e confira o combinado com sua família.</p><p class="muted">Os pontos de apoio serão incorporados após a validação das fontes municipais.</p></aside><p role="status" id="status"></p><p id="offline"></p></main><script type="module" src="app.js"></script></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#005f73">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  
+  <title>Ponte de Apoio - Guia de Emergência</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Polyfill inserido diretamente no HTML para carregar antes de tudo -->
+  <script>
+    if (!window.crypto) { window.crypto = {}; }
+    if (!window.crypto.randomUUID) {
+      window.crypto.randomUUID = function() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+        });
+      };
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    <img src="assets/brand.jpg" alt="Logo Ponte de Apoio" class="logo">
+    <h1>Ponte de Apoio</h1>
+    <p>Guia de preparação para dias de chuva na RMR</p>
+  </header>
+
+  <main>
+    <!-- Seção do Mapa Offline -->
+    <section id="secao-mapa">
+      <h2>Mapa de São José</h2>
+      <!-- O canvas onde o JavaScript desenha as ruas a partir do map.json -->
+      <canvas id="mapa-canvas" width="400" height="300"></canvas>
+    </section>
+
+    <!-- Seção de Busca de Abrigo -->
+    <section id="secao-abrigo">
+      <h2>Encontrar Abrigo Seguro</h2>
+      <p>Use a sua localização atual para descobrir qual é o ponto de apoio oficial mais próximo de você.</p>
+      <button type="button" id="btn-buscar-abrigo">Buscar Abrigo Mais Próximo</button>
+      
+      <!-- Div onde o resultado vai aparecer -->
+      <div id="resultado-abrigo" style="margin-top: 15px; padding: 10px; border-radius: 5px; background-color: #e9ede4; display: none;"></div>
+    </section>
+
+    <!-- Seção do Combinado (Plano Familiar) -->
+    <section id="secao-plano">
+      <h2>O seu Combinado</h2>
+      <p>Combine com quem você pode contar e onde pretende se encontrar em caso de emergência.</p>
+      
+      <form id="form-plano">
+        <div class="campo">
+          <label for="nome">Nome Completo:</label>
+          <input type="text" id="nome" name="nome" placeholder="Ex: Enderson Lucas" required>
+        </div>
+
+        <div class="campo">
+          <label for="telefone">Seu Telefone:</label>
+          <input type="tel" id="telefone" name="telefone" placeholder="81999999999" required>
+        </div>
+
+        <div class="campo">
+          <label for="ponto-encontro">Ponto de Encontro:</label>
+          <input type="text" id="ponto-encontro" name="ponto-encontro" placeholder="Ex: Igreja da Praça Central" required>
+        </div>
+
+        <div class="campo">
+          <label for="contatos">Contatos de Emergência (Nome e Número):</label>
+          <textarea id="contatos" name="contatos" rows="3" placeholder="Mãe: 81988888888"></textarea>
+        </div>
+
+        <div class="campo">
+          <label for="necessidades">Necessidades Especiais (Opcional):</label>
+          <input type="text" id="necessidades" name="necessidades" placeholder="Ex: Cadeira de rodas, medicamentos...">
+        </div>
+
+        <button type="submit" id="btn-salvar">Salvar Combinado</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Dependências do Supabase (via CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
+  <!-- Scripts da Aplicação -->
+  <script type="module" src="plan.mjs"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
