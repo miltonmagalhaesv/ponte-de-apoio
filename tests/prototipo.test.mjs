@@ -36,3 +36,11 @@ test('assistente diferencia apoio pendente, destino e pedido de socorro', () => 
   assert.match(ask('Onde posso ficar?'), /Casa de Rosa/);
   assert.match(ask('Não consigo contactar'), /193/);
 });
+
+test('assistente indica como agir quando a pessoa está perdida e identifica o mapa de exemplo', () => {
+  const context = createContext({document:{querySelector:()=>({})}});
+  runInContext(script, context);
+  const plan = {who:'Vitória', dest:'Casa da irmã', agreed:true};
+  assert.match(context.answer('Estou perdida', plan), /Defesa Civil/);
+  assert.match(context.answer('Como chegar?', plan), /mapa de exemplo/);
+});
